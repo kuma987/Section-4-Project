@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>신메뉴 판매량 예측하기</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+        }
+
+        .input-container {
+            width: 400px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="number"],
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        .result-container {
+            width: 600px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 4px;
+            margin-left: 20px;
+            text-align: center;
+        }
+
+        h2 {
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>신메뉴 판매량 예측하기</h1>
+    <div class="container">
+        <div class="input-container">
+            <form action="/predict" method="post">
+                <label for="price">가격</label>
+                <input type="number" step="100" name="price" min="4000" max="9000" required><br>
+
+                <label for="calories">칼로리(kcal)</label>
+                <input type="number" step="5" name="calories" min="0" max="600" required><br>
+
+                <label for="sugars">당류(g)</label>
+                <input type="number" step="1" name="sugars" min="0" max="100" required><br>
+
+                <label for="protein">단백질(g)</label>
+                <input type="number" step="1" name="protein" min="0" max="20" required><br>
+
+                <label for="sodium">나트륨(mg)</label>
+                <input type="number" step="5" name="sodium" min="0" max="650" required><br>
+
+                <label for="saturated_fat">포화지방(g)</label>
+                <input type="number" step="0.1" name="saturated_fat" min="0" max="20" required><br>
+
+                <label for="allergy">알러지 수</label>
+                <input type="number" step="1" name="allergy" min="0" max="6" required><br>
+
+                <label for="category">카테고리</label>
+                <select name="category" required>
+                    <option value="티">티</option>
+                    <option value="에스프레소">에스프레소</option>
+                    <option value="블렌디드">블렌디드</option>
+                    <option value="프라푸치노">프라푸치노</option>
+                    <option value="기타 제조 음료">기타 제조 음료</option>
+                    <option value="브루드 커피">브루드 커피</option>
+                </select><br>
+
+                <label for="caffeine">카페인 함량</label>
+                <select name="caffeine" required>
+                    <option value="high">높음</option>
+                    <option value="low">낮음</option>
+                </select><br>
+
+                <label for="flavor">종류</label>
+                <select name="flavor" required>
+                    <option value="coffe">커피</option>
+                    <option value="blend">혼합</option>
+                    <option value="beverage">과일 음료 및 차</option>
+                </select><br>
+
+                <input type="submit" value="예측하기">
+            </form>
+        </div>
+
+        {% if prediction %}
+            <div class="result-container">
+                <h2>판매량 예측 결과</h2>
+                {% if prediction >= 0 %}
+                    <p>{{ prediction }}</p>
+                {% else %}
+                    <p>해당 특징을 추천하지 않습니다</p>
+                {% endif %}
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
