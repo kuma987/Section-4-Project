@@ -34,4 +34,4 @@
 - 신메뉴 개발부서팀이 신메뉴 개발 시 겪을 수 있는 위험요소를 최소화 시키기 위해 신메뉴에 특징을 바탕으로 예상되는 판매량을 예측해주는 API 서비스 개발
 
 ## 2. 개발 프로세스
-<p align="center"><img src = https://i.imgur.com/3fmiSxv.png width="1000" height="300"/> </br>
+<p align="center"><img src = https://i.imgur.com/3fmiSxv.png width="1000" height="800"/> </br>
