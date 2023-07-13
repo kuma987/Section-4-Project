@@ -1,4 +1,4 @@
-# Section 3 Project
+# Section 4 Project
 
 ## 개요
 해당 프로젝트는 [코트스테이츠](https://github.com/codestates) AI 부트캠프 Section 4에서 학습한 내용을 활용하기 위해 진행되었습니다.
